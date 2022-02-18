@@ -31,4 +31,9 @@
     margin-top: 30px;
     width: 100%;
 
+    transition: color .3s ease;
+
+    &:hover{
+        color: darken($color: white, $amount: 20)
+    }
 }
