@@ -1,9 +1,10 @@
-// import 'firebase/firestore';
-// import 'firebase/auth';
-import { initializeApp } from "firebase/app";
-import { getFirestore } from 'firebase/firestore';
-import { GoogleAuthProvider,  } from 'firebase/firebase-auth';
-
+import firebase from "firebase/app";
+import 'firebase/firestore';
+import 'firebase/auth';
+// Import the functions you need from the SDKs you need
+// import { initializeApp } from "firebase/app";
+// import { getFirestore } from 'firebase/firestore';
+// import { GoogleAuthProvider } from 'firebase/auth';
 const firebaseConfig = {
     apiKey: "AIzaSyC0_we-VxbAPYGhnFGZblsW0TD2mB6kP6U",
     authDomain: "react-app-journal-7dd5d.firebaseapp.com",
@@ -15,14 +16,16 @@ const firebaseConfig = {
   };
   
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  
-  const db = getFirestore();
-  const googleAuthProvider = new GoogleAuthProvider();
+//   const app = initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);  
+
+  const db = firebase.firestore();
+
+  const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
 
   export {
       db,
-      app,
+      firebase,
       googleAuthProvider
   }
