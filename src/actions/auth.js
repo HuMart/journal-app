@@ -2,13 +2,47 @@ import { firebase, googleAuthProvider } from "../firebase/firebase-config";
 import 'firebase/auth'
 
 import { types } from "../types/types";
+import { finishLoading, startLoading } from "./ui";
 
-export const startLoginEmailPassword = ( email, password ) => {
+export const startLoginEmailPassword = ( email, password, name ) => {
     return (dispatch) => {
 
-        setTimeout(() => {
-            dispatch( login( 123, "Hugo" ) );
-        },3500);
+        dispatch(startLoading());
+
+        firebase.auth().signInWithEmailAndPassword( email, password )
+        .then( ({user}) => {
+
+            // user.updateProfile({ displayName: name });
+
+            
+            dispatch(login( user.uid, user.displayName ));
+
+            dispatch( finishLoading() );                      
+            
+        })
+        .catch(e => {
+            console.log(e.message);
+            dispatch( finishLoading() ); 
+        })
+    }
+}
+
+export const startRegister = ( email, password, name ) => {
+    return (dispatch) => {
+        
+        firebase.auth().createUserWithEmailAndPassword( email, password )
+        .then( async({user}) => {
+
+            await user.updateProfile({ displayName: name });
+
+            
+            dispatch(
+                login( user.uid, user.displayName )                    
+            )
+        })
+        .catch(e => {
+            console.log(e.message)
+        })
     }
 }
 

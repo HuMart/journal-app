@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { useForm } from '../../hooks/useForms'
 import { useDispatch, useSelector } from 'react-redux';
 import { removeError, setError } from '../../actions/ui';
+import { startRegister } from '../../actions/auth';
 
 
 export const RegisterScreen = () => {
@@ -28,7 +29,7 @@ export const RegisterScreen = () => {
     e.preventDefault();
     
     if(isFormValid()){
-      console.log("Form is Valid");
+      dispatch( startRegister(email, password, name));
     }
 
   }
