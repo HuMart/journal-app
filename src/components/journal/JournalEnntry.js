@@ -7,7 +7,7 @@ export const JournalEnntry = () => {
         className='journal__entry-picture'
         style={{
           backgroundSize: 'cover',
-          backgroundImage: 'url(https://www.bignews24.it/wp-content/uploads/2022/02/george-russell-mercedes-w13-1-VvTedh.jpeg)'
+          backgroundImage: 'url(https://images.hgmsites.net/hug/2022-ferrari-f1-75-formula-one-race-car_100829457_h.jpg'
         }}
       >
       </div>
