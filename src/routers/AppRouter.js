@@ -12,6 +12,7 @@ import { AuthRouter } from './AuthRouter';
 import { PrivateRoute } from './PrivateRoute';
 
 import { login } from '../actions/auth';
+import { PublicRoute } from './PublicRoute';
 
 
 
@@ -48,11 +49,13 @@ export const AppRouter = () => {
     <Router>
         <div>
             <Switch>
-                <Route 
+                <PublicRoute
                     path="/auth" 
-                    component={AuthRouter} 
+                    component={ AuthRouter } 
+                    isAuthenticated={ loggedIn }
                 />            
                 <PrivateRoute
+                    isAuthenticated={ loggedIn }
                     exact 
                     path="/" 
                     component={JournalScreen} 
